@@ -21,8 +21,8 @@ namespace BasicFSM
 			Ending
 		};
 	private:
-		State mState = State::Routing;
-		map <State, string> StateNameMap;
+		State m_state_ = State::Routing;
+		map <State, string> state_name_map_;
 	#pragma endregion
 	public:	
 		StateMachine()

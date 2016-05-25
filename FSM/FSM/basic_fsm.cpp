@@ -1,18 +1,18 @@
-#include "basicFSM.h"
+#include "basic_fsm.h"
 #include <iostream>
 using namespace BasicFSM;
 
 void StateMachine::InitMap()
 {
-	StateNameMap[State::Routing] = "Routing";
-	StateNameMap[State::Sentrying] = "Sentrying";
-	StateNameMap[State::Attacking] = "Attacking";
-	StateNameMap[State::Ending] = "Ending";
+	state_name_map_[State::Routing] = "Routing";
+	state_name_map_[State::Sentrying] = "Sentrying";
+	state_name_map_[State::Attacking] = "Attacking";
+	state_name_map_[State::Ending] = "Ending";
 }
 
 string StateMachine::GetStateName()
 {
-	return StateNameMap[mState];
+	return state_name_map_[m_state_];
 }
 
 string StateMachine::UpdateState()
@@ -22,25 +22,25 @@ string StateMachine::UpdateState()
 
 void StateMachine::NextState()
 {
-	switch ( mState )
+	switch ( m_state_ )
 	{
 	case State::Routing:
-		mState = State::Sentrying;
+		m_state_ = State::Sentrying;
 		break;
 	case State::Sentrying:
-		mState = State::Attacking;
+		m_state_ = State::Attacking;
 		break;
 	case State::Attacking:
 		// Ideally this should be determined by game logic. Currently using RNG
 		if ( rand() % 100 < 75 )
 		{
 			std::cout << "\nRandom generator says NPC has survived.";
-			mState = State::Routing;
+			m_state_ = State::Routing;
 		}
 		else
 		{
 			std::cout << "\nRandom generator says NPC did not survive.";
-			mState = State::Ending;
+			m_state_ = State::Ending;
 		}
 		break;
 
@@ -52,5 +52,5 @@ void StateMachine::NextState()
 
 bool StateMachine::IsDone()
 {
-	return mState == State::Ending;
+	return m_state_ == State::Ending;
 }

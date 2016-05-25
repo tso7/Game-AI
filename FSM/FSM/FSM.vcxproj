@@ -146,11 +146,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="basicFSM.cpp" />
+    <ClCompile Include="abstract_fsm.cpp" />
+    <ClCompile Include="basic_fsm.cpp" />
+    <ClCompile Include="boring_machine_state.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="boring_machine.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="basicFSM.h" />
+    <ClInclude Include="abstract_fsm.h" />
+    <ClInclude Include="basic_fsm.h" />
+    <ClInclude Include="boring_machine.h" />
+    <ClInclude Include="boring_machine_state.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

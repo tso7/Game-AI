@@ -13,18 +13,54 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Header Files\Basic">
+      <UniqueIdentifier>{14d2d23a-7873-4178-a102-cd2b228907d8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Abstract">
+      <UniqueIdentifier>{631f1244-e8b4-4761-aced-5cd2878a2729}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Abstract">
+      <UniqueIdentifier>{a2e32ceb-96f1-447f-bb59-65811a6a055e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Basic">
+      <UniqueIdentifier>{5a7a5349-a06a-4cad-8f41-9990abe06f81}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\AbstractVariations">
+      <UniqueIdentifier>{ecfb3ada-ba15-45ea-95ef-cce4dd3c4214}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\AbstractVariations">
+      <UniqueIdentifier>{2428d6ee-fd84-4d19-b1b4-85b37235423f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="basicFSM.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="basic_fsm.cpp">
+      <Filter>Source Files\Basic</Filter>
+    </ClCompile>
+    <ClCompile Include="abstract_fsm.cpp">
+      <Filter>Source Files\Abstract</Filter>
+    </ClCompile>
+    <ClCompile Include="boring_machine_state.cpp">
+      <Filter>Source Files\AbstractVariations</Filter>
+    </ClCompile>
+    <ClCompile Include="boring_machine.cpp">
+      <Filter>Source Files\AbstractVariations</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="basicFSM.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="abstract_fsm.h">
+      <Filter>Header Files\Abstract</Filter>
+    </ClInclude>
+    <ClInclude Include="basic_fsm.h">
+      <Filter>Header Files\Basic</Filter>
+    </ClInclude>
+    <ClInclude Include="boring_machine.h">
+      <Filter>Header Files\AbstractVariations</Filter>
+    </ClInclude>
+    <ClInclude Include="boring_machine_state.h">
+      <Filter>Header Files\AbstractVariations</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
