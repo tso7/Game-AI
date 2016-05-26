@@ -6,7 +6,7 @@ namespace AbstractFSM
 	namespace Fun
 	{
 		/// <summary>
-		/// Initializes a new instance of the FunnerMachine class.
+		/// Initializes a new instance of the FunMachine class.
 		/// </summary>
 		State* FunMachine::CurrentState() const
 		{
