@@ -1,5 +1,6 @@
 #include "basic_fsm.h"
 #include "boring_machine.h"
+#include "fun_machine.h"
 #include <iostream>
 #include <vector>
 using namespace std;
@@ -21,10 +22,43 @@ int main (void)
 	//}
 #pragma endregion
 
-#pragma region AbstractFSM
+#pragma region BoringFSM
+	//// First we need to create the state machine.
+	//// Note that I'm using the abstract IStateMachine instead of a concrete class.
+	//AbstractFSM::Boring::BoringMachine machine;
+
+	//// We have a machine, now run it.
+	//while ( !machine.IsComplete() )
+	//{
+	//	// Print out our current state
+	//	cout << "\nCurrently in " + machine.CurrentState()->GetName();
+	//	machine.CurrentState()->Run();
+
+	//	// Print out our possible transitions
+	//	cout<< "\nAvailable choices are:";
+	//	vector<string> transitions = machine.PossibleTransitions();
+	//	for(size_t i=0, len = transitions.size(); i < len; ++i)
+	//	{
+	//		cout << " " + transitions[i];
+	//	}
+
+	//	// Request a transition from the user
+	//	cout << "\nWhat do you want to do?\n";
+	//	string next_state;
+	//	cin >> next_state;
+	//	machine.Advance(next_state);
+	//}
+
+	//// And we're done!
+	//// Run our final node as a special case since the above loop won't do it.
+	//cout << "\nCurrently in " + machine.CurrentState()->GetName();
+	//machine.CurrentState()->Run();
+#pragma endregion
+
+#pragma region FunFSM
 	// First we need to create the state machine.
 	// Note that I'm using the abstract IStateMachine instead of a concrete class.
-	AbstractFSM::Boring::BoringMachine machine;
+	AbstractFSM::Fun::FunMachine machine;
 
 	// We have a machine, now run it.
 	while ( !machine.IsComplete() )
@@ -34,17 +68,17 @@ int main (void)
 		machine.CurrentState()->Run();
 
 		// Print out our possible transitions
-		cout<< "\nAvailable choices are:";
+		cout << "\nAvailable choices are:";
 		vector<string> transitions = machine.PossibleTransitions();
-		for(size_t i=0, len = transitions.size(); i < len; ++i)
+		for ( size_t i = 0, len = transitions.size(); i < len; ++i )
 		{
-			cout << " " + transitions[i];
+			cout << "\n" + transitions[i];
 		}
 
 		// Request a transition from the user
 		cout << "\nWhat do you want to do?\n";
 		string next_state;
-		cin >> next_state;
+		getline(cin,next_state);
 		machine.Advance(next_state);
 	}
 

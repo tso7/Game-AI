@@ -14,13 +14,14 @@ namespace AbstractFSM
 		virtual string GetName() = 0;
 		// Do something
 		virtual void Run() = 0;
+		virtual ~State() {}
 	};
 
 	class StateMachine
 	{
 	public:
 		// Accessor to look at the current state.
-		virtual State * CurrentState() const = 0;
+		virtual State* CurrentState() const = 0;
 		
 		// List of all possible transitions we can make from this current state.
 		virtual vector<string> PossibleTransitions() = 0;
