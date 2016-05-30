@@ -16,7 +16,7 @@ namespace AbstractFSM
 			}
 			State * CurrentState() const;
 			vector<string> PossibleTransitions();
-			bool Advance(string nextState);
+			bool Advance(string);
 			bool IsComplete();
 		};
 	}

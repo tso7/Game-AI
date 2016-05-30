@@ -71,6 +71,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
+    <IncludePath>C:\Program Files\rapidxml-1.13;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
@@ -87,7 +88,7 @@
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>;_SCL_SECURE_NO_WARNINGS</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
     </ClCompile>
     <Link>
@@ -153,6 +154,8 @@
     <ClCompile Include="fun_machine_state.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="boring_machine.cpp" />
+    <ClCompile Include="saved_machine.cpp" />
+    <ClCompile Include="saved_machine_state.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="abstract_fsm.h" />
@@ -161,6 +164,8 @@
     <ClInclude Include="boring_machine_state.h" />
     <ClInclude Include="fun_machine.h" />
     <ClInclude Include="fun_machine_state.h" />
+    <ClInclude Include="saved_machine.h" />
+    <ClInclude Include="saved_machine_state.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

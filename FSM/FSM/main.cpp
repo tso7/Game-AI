@@ -1,8 +1,7 @@
 #include "basic_fsm.h"
 #include "boring_machine.h"
 #include "fun_machine.h"
-#include <iostream>
-#include <vector>
+#include "saved_machine.h"
 using namespace std;
 
 int main (void)
@@ -56,9 +55,42 @@ int main (void)
 #pragma endregion
 
 #pragma region FunFSM
+	//// First we need to create the state machine.
+	//// Note that I'm using the abstract IStateMachine instead of a concrete class.
+	//AbstractFSM::Fun::FunMachine machine;
+
+	//// We have a machine, now run it.
+	//while ( !machine.IsComplete() )
+	//{
+	//	// Print out our current state
+	//	cout << "\nCurrently in " + machine.CurrentState()->GetName();
+	//	machine.CurrentState()->Run();
+
+	//	// Print out our possible transitions
+	//	cout << "\nAvailable choices are:";
+	//	vector<string> transitions = machine.PossibleTransitions();
+	//	for ( size_t i = 0, len = transitions.size(); i < len; ++i )
+	//	{
+	//		cout << "\n" + transitions[i];
+	//	}
+
+	//	// Request a transition from the user
+	//	cout << "\nWhat do you want to do?\n";
+	//	string next_state;
+	//	getline(cin,next_state);
+	//	machine.Advance(next_state);
+	//}
+
+	//// And we're done!
+	//// Run our final node as a special case since the above loop won't do it.
+	//cout << "\nCurrently in " + machine.CurrentState()->GetName();
+	//machine.CurrentState()->Run();
+#pragma endregion
+
+#pragma region SavedFSM
 	// First we need to create the state machine.
 	// Note that I'm using the abstract IStateMachine instead of a concrete class.
-	AbstractFSM::Fun::FunMachine machine;
+	AbstractFSM::DataDriven::SavedMachine machine;
 
 	// We have a machine, now run it.
 	while ( !machine.IsComplete() )
@@ -78,7 +110,7 @@ int main (void)
 		// Request a transition from the user
 		cout << "\nWhat do you want to do?\n";
 		string next_state;
-		getline(cin,next_state);
+		getline(cin, next_state);
 		machine.Advance(next_state);
 	}
 

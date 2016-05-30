@@ -54,6 +54,12 @@
     <ClCompile Include="fun_machine_state.cpp">
       <Filter>Source Files\AbstractVariations</Filter>
     </ClCompile>
+    <ClCompile Include="saved_machine.cpp">
+      <Filter>Source Files\AbstractVariations</Filter>
+    </ClCompile>
+    <ClCompile Include="saved_machine_state.cpp">
+      <Filter>Source Files\AbstractVariations</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="abstract_fsm.h">
@@ -72,6 +78,12 @@
       <Filter>Header Files\AbstractVariations</Filter>
     </ClInclude>
     <ClInclude Include="fun_machine.h">
+      <Filter>Header Files\AbstractVariations</Filter>
+    </ClInclude>
+    <ClInclude Include="saved_machine.h">
+      <Filter>Header Files\AbstractVariations</Filter>
+    </ClInclude>
+    <ClInclude Include="saved_machine_state.h">
       <Filter>Header Files\AbstractVariations</Filter>
     </ClInclude>
   </ItemGroup>

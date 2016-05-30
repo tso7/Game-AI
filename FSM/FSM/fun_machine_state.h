@@ -1,6 +1,4 @@
 #include "abstract_fsm.h"
-#include <map>
-#include <vector>
 
 namespace AbstractFSM
 {
