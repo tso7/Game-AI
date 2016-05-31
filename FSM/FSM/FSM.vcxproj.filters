@@ -19,9 +19,6 @@
     <Filter Include="Header Files\Abstract">
       <UniqueIdentifier>{631f1244-e8b4-4761-aced-5cd2878a2729}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Abstract">
-      <UniqueIdentifier>{a2e32ceb-96f1-447f-bb59-65811a6a055e}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\Basic">
       <UniqueIdentifier>{5a7a5349-a06a-4cad-8f41-9990abe06f81}</UniqueIdentifier>
     </Filter>
@@ -38,9 +35,6 @@
     </ClCompile>
     <ClCompile Include="basic_fsm.cpp">
       <Filter>Source Files\Basic</Filter>
-    </ClCompile>
-    <ClCompile Include="abstract_fsm.cpp">
-      <Filter>Source Files\Abstract</Filter>
     </ClCompile>
     <ClCompile Include="boring_machine_state.cpp">
       <Filter>Source Files\AbstractVariations</Filter>

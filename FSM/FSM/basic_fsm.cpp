@@ -10,12 +10,12 @@ void StateMachine::InitMap()
 	state_name_map_[State::Ending] = "Ending";
 }
 
-string StateMachine::GetStateName()
+std:: string StateMachine::GetStateName()
 {
 	return state_name_map_[m_state_];
 }
 
-string StateMachine::UpdateState()
+std::string StateMachine::UpdateState()
 {
 	return "\nRunning state " + GetStateName();
 }

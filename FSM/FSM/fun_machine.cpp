@@ -8,12 +8,6 @@ namespace AbstractFSM
 		/// <summary>
 		/// Initializes a new instance of the FunMachine class.
 		/// </summary>
-		State* FunMachine::CurrentState() const
-		{
-			State *ptr = m_current_;
-			return ptr;
-		}
-
 		FunMachine::FunMachine()
 		{
 			// Create all the fun states in our mini-world
@@ -52,7 +46,7 @@ namespace AbstractFSM
 			west_wing->Neighbors().push_back(workroom_A);
 			west_wing->Neighbors().push_back(workroom_B);
 			west_wing->Neighbors().push_back(workroom_C);
-
+			
 			workroom_A->Neighbors().push_back(west_wing);
 			workroom_B->Neighbors().push_back(west_wing);
 
@@ -77,18 +71,25 @@ namespace AbstractFSM
 			// Finally set the starting point
 			m_current_ = entry_hall;
 		}
-#pragma region StateMachine Overrides
-		vector<string> FunMachine::PossibleTransitions()
+
+#pragma region StateMachine overrides
+		// Accessor to look at the current state
+		State* FunMachine::CurrentState() const
 		{
-			vector<string> result;
+			return m_current_;
+		}
+		// List of all possible transitions we can make from this current state
+		std::vector<std::string> FunMachine::PossibleTransitions()
+		{
+			std::vector<std::string> result;
 			for (size_t i = 0, len = m_current_->Neighbors().size(); i < len; ++i)
 			{
 				result.push_back(m_current_->Neighbors()[i]->GetName());
 			}
 			return result;
 		}
-		
-		bool FunMachine::Advance(string next_state)
+		// Advance to the specified machine state
+		bool FunMachine::Advance(std::string next_state)
 		{
 			for ( size_t i = 0, len = m_current_->Neighbors().size(); i < len; ++i )
 			{
@@ -98,10 +99,10 @@ namespace AbstractFSM
 					return true;
 				}
 			}
-			std::cout << "Invalid state.";
+			std::cout << "Invalid state." << std::endl;
 			return false;
 		}
-
+		// Check if machine has reached exit node
 		bool FunMachine::IsComplete()
 		{
 			return m_current_ == m_exit_;

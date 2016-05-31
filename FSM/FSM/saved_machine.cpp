@@ -1,24 +1,24 @@
 #include "saved_machine.h"
 #include <iostream>
 #include <fstream>
-using namespace AbstractFSM::DataDriven;
 
 namespace AbstractFSM
 {
 	namespace DataDriven
 	{
-#pragma region Constructor
+#pragma region Member
 		SavedMachine::SavedMachine()
 		{
 			try
 			{
 				ImportFromXML();
 			}
-			catch ( exception ex )
+			catch ( std::exception ex )
 			{
 				m_states_.clear();
 			}
 
+			// Create default map if no data exists and then create states
 			if ( m_states_.size() == 0 )
 			{
 				GenerateDefaultMap();
@@ -36,13 +36,11 @@ namespace AbstractFSM
 			}
 			if ( m_current_ == NULL )
 			{
-				cout << "\n\nERROR! NO ENTRY STATE DEFINED.";
-				throw new exception("No entry state defined in this state machine.  Cannot continue.");
+				std::cout << "\n\nERROR! NO ENTRY STATE DEFINED.";
+				throw new std::exception("No entry state defined in this state machine.  Cannot continue.");
 			}
 		}
-#pragma endregion
-
-#pragma region Helper Functions
+		// Create map if XML does not exist
 		void SavedMachine::GenerateDefaultMap()
 		{
 			m_states_.clear();
@@ -63,6 +61,10 @@ namespace AbstractFSM
 
 			ExportToXML();
 		}
+#pragma endregion
+
+#pragma region Helper Functions
+		// Write into the XML file
 		void SavedMachine::ExportToXML()
 		{
 			rapidxml::xml_document<> doc;
@@ -74,6 +76,7 @@ namespace AbstractFSM
 			xmlFile.close();
 			doc.clear();
 		}
+		// Read the XML file
 		void SavedMachine::ImportFromXML()
 		{
 			rapidxml::file<> xmlFile("GameRooms.xml");
@@ -81,7 +84,7 @@ namespace AbstractFSM
 			doc.parse<0>(xmlFile.data());
 			ReadXml(doc);
 		}
-
+		// Populate the states based on the DOM tree
 		void SavedMachine::ReadXml(xml_document<> &doc)
 		{
 			xml_node<> * root_node = doc.first_node("SavedMachine");
@@ -92,7 +95,7 @@ namespace AbstractFSM
 				m_states_.push_back(new SavedMachineState(room_node));
 			}
 		}
-
+		// Convert the existing state data into a DOM tree
 		void SavedMachine::WriteXml(xml_document<> &doc)
 		{
 			for ( size_t i = 0, len = m_states_.size(); i < len; ++i )
@@ -103,21 +106,23 @@ namespace AbstractFSM
 #pragma endregion
 
 #pragma region StateMachine Overrides
+		// Accessor to look at the current state
 		State * SavedMachine::CurrentState() const
 		{
 			return m_current_;
 		}
-		vector<string> SavedMachine::PossibleTransitions()
+		// List of all possible transitions we can make from this current state
+		std::vector<std::string> SavedMachine::PossibleTransitions()
 		{
-			vector<string> result;
+			std::vector<std::string> result;
 			for ( size_t i = 0, len = m_current_->Neighbors().size(); i < len; ++i )
 			{
 				result.push_back(m_current_->Neighbors()[i]);
 			}
 			return result;
 		}
-
-		bool SavedMachine::Advance(string nextState)
+		// Advance to the specified machine state
+		bool SavedMachine::Advance(std::string nextState)
 		{
 			for ( size_t i = 0, len = m_states_.size(); i < len; ++i )
 			{
@@ -130,7 +135,7 @@ namespace AbstractFSM
 			std::cout << "Cannot do that.";
 			return false;
 		}
-		
+		// Check if machine has reached exit node
 		bool SavedMachine::IsComplete()
 		{
 			return m_current_->IsExitState();

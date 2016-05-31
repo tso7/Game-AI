@@ -1,3 +1,6 @@
+// Fun State Machine that creates states for the layout of a house.
+// User decides which room they want to enter based on the possible
+// connections between the different sections of the house.
 #include "abstract_fsm.h"
 
 namespace AbstractFSM
@@ -8,16 +11,21 @@ namespace AbstractFSM
 		{
 #pragma region Members
 		private:
-			string m_name_;
-			string m_description_;
-#pragma endregion
+			// Name of the machine state
+			std::string m_name_;
+			// Description of the state
+			std::string m_description_;
+			// List of possible neighbors
+			std::vector<FunMachineState*> m_neighbors_;
 		public:
-			vector<FunMachineState*> m_neighbors_;
-			vector<FunMachineState*>& Neighbors();
-			FunMachineState(string, string);
+			// Constructor to create state based on name and description
+			FunMachineState(std::string, std::string);
+			// Fetch the list of neighbors
+			std::vector<FunMachineState*>& Neighbors();			
+#pragma endregion
 
 #pragma region State overrides
-			string GetName() override;
+			std::string GetName() override;
 			void Run() override;
 #pragma endregion
 		};
