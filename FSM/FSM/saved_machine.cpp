@@ -117,7 +117,14 @@ namespace AbstractFSM
 			std::vector<std::string> result;
 			for ( size_t i = 0, len = m_current_->Neighbors().size(); i < len; ++i )
 			{
-				result.push_back(m_current_->Neighbors()[i]);
+				for ( size_t j = 0, len = m_states_.size(); j < len; ++j )
+				{
+					if ( m_current_->Neighbors()[i] == m_states_[j]->Key() )
+					{
+						result.push_back(m_states_[j]->GetName());
+						break;
+					}
+				}
 			}
 			return result;
 		}
