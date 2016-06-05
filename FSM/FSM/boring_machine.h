@@ -18,6 +18,10 @@ namespace AbstractFSM
 			{
 				m_state_ = new BoringMachineState;
 			}
+			~BoringMachine()
+			{
+				delete m_state_;
+			}
 #pragma endregion
 
 #pragma region StateMachine overrides

@@ -183,5 +183,6 @@ int main (void)
 	// Run our final node as a special case since the above loop won't do it.
 	cout << "\nCurrently in " + machine->CurrentState()->GetName();
 	machine->CurrentState()->Run();	
+	delete machine;
 #pragma endregion
 }

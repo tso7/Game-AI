@@ -1,5 +1,6 @@
 // The actual machine that handles the different fun machine state
 #include "fun_machine_state.h"
+#include <algorithm>
 
 namespace AbstractFSM
 {
@@ -18,6 +19,14 @@ namespace AbstractFSM
 		public:
 			// Default constructor
 			FunMachine();
+			// Dtor
+			~FunMachine()
+			{
+				for (size_t i = 0, len = m_states_.size(); i < len; ++i)
+				{
+					delete m_states_[i];
+				}
+			}
 #pragma endregion
 
 #pragma region StateMachine Overrides

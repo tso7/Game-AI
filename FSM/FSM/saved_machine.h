@@ -18,6 +18,14 @@ namespace AbstractFSM
 		public:
 			// Default constructor
 			SavedMachine();
+			// Dtor
+			~SavedMachine()
+			{
+				for ( size_t i = 0, len = m_states_.size(); i < len; ++i )
+				{
+					delete m_states_[i];
+				}
+			}
 #pragma endregion
 
 #pragma region Helper Functions
