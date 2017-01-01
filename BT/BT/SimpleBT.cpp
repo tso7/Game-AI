@@ -1,6 +1,6 @@
 /*
- *	The most basic implementation of a Behavior Tree.
- *	The code will model a dog who is trying to pick up a stick thrown some
+ *	- The most basic implementation of a Behavior Tree.
+ *	- The code will model a dog who is trying to pick up a stick thrown some
  *	distance away.
  *               
  *
@@ -36,17 +36,17 @@ public:
 class CompositeNode : public Node
 {
 private:
-	list<Node *> children;
+	list<Node *> children_;
 	
 public:
 	const list<Node *>& GetChildren() const
 	{
-		return children;
+		return children_;
 	}
 
 	void AddChild (Node *child)
 	{
-		children.emplace_back(child);
+		children_.emplace_back(child);
 	}
 };
 
@@ -98,49 +98,49 @@ struct StickStatus
 class CheckIfStickPickedUpTask : public Node
 {
 private:
-	StickStatus *status;
+	StickStatus *status_;
 	
 public:
-	CheckIfStickPickedUpTask(StickStatus *status) : status(status) {}
+	CheckIfStickPickedUpTask(StickStatus *status) : status_(status) {}
 	
 	virtual bool run() override
 	{
-		if (status->is_picked_up)
+		if (status_->is_picked_up)
 			cout << "The stick has been picked up!" << endl;
 		else
 			cout << "The stick has not been picked up." << endl;
 
 		// Return status
-		return status->is_picked_up;
+		return status_->is_picked_up;
 	}
 };
 
 class ApproachStickTask : public Node
 {
 private:
-	StickStatus *status;
-	bool is_obstructed;
+	StickStatus *status_;
+	bool is_obstructed_;
 
 public:
 	ApproachStickTask(StickStatus *status, bool is_obstructed) 
-		: status(status)
-		, is_obstructed(is_obstructed)
+		: status_(status)
+		, is_obstructed_(is_obstructed)
 	{}
 
 	virtual bool run() override
 	{
-		if (is_obstructed)
+		if (is_obstructed_)
 			return false;
 		
-		if (status->distance > 0)
+		if (status_->distance > 0)
 		{
 			cout << "The dog is approaching the stick..." << endl;
-			status->distance--;
+			status_->distance--;
 
-			if (status->distance > 1)
-				cout << "The dog is now " << status->distance << " meters away "
+			if (status_->distance > 1)
+				cout << "The dog is now " << status_->distance << " meters away "
 				"from the stick." << endl;
-			else if (status->distance == 1)
+			else if (status_->distance == 1)
 				cout << "The dog is nearly at the stick!" << endl;
 			else
 				cout << "The dog has reached the stick!" << endl;
@@ -154,21 +154,21 @@ public:
 class PickUpStickTask : public Node
 {
 private:
-	StickStatus *status;
+	StickStatus *status_;
 
 public:
-	PickUpStickTask (StickStatus *status) : status(status) {}
+	PickUpStickTask (StickStatus *status) : status_(status) {}
 	
 	virtual bool run() override
 	{
-		if (status->distance > 0)
+		if (status_->distance > 0)
 		{
 			cout << "The dog is too far away from the stick to pick it up" 
 				<< endl;
 			return false;
 		}
 		
-		status->is_picked_up = true;
+		status_->is_picked_up = true;
 		cout << "The stick has been picked up!" << endl;
 		return true;
 	}
