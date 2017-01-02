@@ -146,11 +146,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="DecoratedBT.cpp" />
     <ClCompile Include="DetailedBT.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="SimpleBT.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="DecoratedBT.h" />
     <ClInclude Include="DetailedBT.h" />
     <ClInclude Include="SimpleBT.h" />
   </ItemGroup>

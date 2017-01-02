@@ -2,58 +2,58 @@
 #ifndef BT_DETAILEDBT_H_
 #define BT_DETAILEDBT_H_
 /*
-*	- A more complex implementation of a Behavior Tree.
-*	- I just finished Titanfall 2, so this code will try to model a Titan in
-*	  auto mode, trying to destroy a target.
-*	- It first attempts to destroy the target by moving into melee range and
-*	  trying different melee attacks.
-*	- If those fail, it attempts to use weapons.
-*	- All tasks have been simplified to simple pass / fail scenarios.
-*
-*									Root
-*									 |
-*									 |
-*								  Selector
-*									 |
-*							 -----------------------------------------------
-*							|												|
-*						Sequence (Melee attack)								|
-*							|												|
-*		    -----------------------------------------------					|
-*		  /				    |				|				\				|
-*		 /					|				|				 \				|
-*		/					|				|				  \				|
-*	Move to				Selector		Confirm 		Update player		|
-*	 target					|			target kill							|
-*							|												|
-*			   ------------------------										|
-*			 /				|			\									|
-*			/				|			 \									|
-*		Walk over		Sequence		Sword attack						|
-*						/	   \											|
-*					   /		\											|
-*				Focus target	Melee smash									|
-*																			|
-*																			|
-*							 -----------------------------------------------
-*							|
-*						Sequence (Weapons)
-*							|
-*		    -----------------------------------------------
-*		  /				    |				|				\
-*		 /					|				|				 \
-*		/					|				|				  \
-*	Move to 			Selector		Confirm 		Update player
-*	attack range			|			target kill
-*							|
-*			   ------------------------
-*			 /				|			\
-*			/				|			 \
-*		Machine gun		Sequence		Special core attack
-*						/	   \
-*					   /		\
-*				Acquire lock	Fire missiles
-*/
+ *	- A more complex implementation of a Behavior Tree.
+ *	- I just finished Titanfall 2, so this code will try to model a Titan in
+ *	  auto mode, trying to destroy a target.
+ *	- It first attempts to destroy the target by moving into melee range and
+ *	  trying different melee attacks.
+ *	- If those fail, it attempts to use weapons.
+ *	- All tasks have been simplified to simple pass / fail scenarios.
+ *
+ *									Root
+ *									 |
+ *									 |
+ *								  Selector
+ *									 |
+ *							 -----------------------------------------------
+ *							|												|
+ *						Sequence (Melee attack)								|
+ *							|												|
+ *		    -----------------------------------------------					|
+ *		  /				    |				|				\				|
+ *		 /					|				|				 \				|
+ *		/					|				|				  \				|
+ *	Move to				Selector		Confirm 		Update player		|
+ *	 target					|			target kill							|
+ *							|												|
+ *			   ------------------------										|
+ *			 /				|			\									|
+ *			/				|			 \									|
+ *		Walk over		Sequence		Sword attack						|
+ *						/	   \											|
+ *					   /		\											|
+ *				Focus target	Melee smash									|
+ *																			|
+ *																			|
+ *							 -----------------------------------------------
+ *							|
+ *						Sequence (Weapons)
+ *							|
+ *		    -----------------------------------------------
+ *		  /				    |				|				\
+ *		 /					|				|				 \
+ *		/					|				|				  \
+ *	Move to 			Selector		Confirm 		Update player
+ *	attack range			|			target kill
+ *							|
+ *			   ------------------------
+ *			 /				|			\
+ *			/				|			 \
+ *		Machine gun		Sequence		Special core attack
+ *						/	   \
+ *					   /		\
+ *				Acquire lock	Fire missiles
+ */
 
 #include <vector>
 #include <algorithm>

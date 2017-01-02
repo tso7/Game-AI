@@ -2,26 +2,26 @@
 #ifndef BT_SIMPLEBT_H_
 #define BT_SIMPLEBT_H_
 /*
-*	- The most basic implementation of a Behavior Tree.
-*	- The code will model a dog who is trying to pick up a stick thrown some
-*	distance away.
-*
-*
-*						Root
-*						 |
-*						 |
-*			Selector (Wait for one to succeed)
-*				   /				\
-*				  /					 \
-*				 /					  \
-*			Stick picked up?		Sequence (All to succeed)
-*			(Complete when                /           \
-*			 stick is picked up)         /             \
-*			                            /               \
-*							   Approach stick      Pick up the stick
-*							  (Move closer until
-*								in range of stick)
-*/
+ *	- The most basic implementation of a Behavior Tree.
+ *	- The code will model a dog who is trying to pick up a stick thrown some
+ *	distance away.
+ *
+ *
+ *						Root
+ *						 |
+ *						 |
+ *			Selector (Wait for one to succeed)
+ *				   /			\
+ *				  /			 \
+ *				 /			  \
+ *			Stick picked up?		Sequence (All to succeed)
+ *			(Complete when              		  /           \
+ *			 stick is picked up)        		 /             \
+ *			                           		/               \
+ *							   Approach stick      Pick up the stick
+ *							  (Move closer until
+ *								in range of stick)
+ */
 
 #include <list>
 using namespace std;
